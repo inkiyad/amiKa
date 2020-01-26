@@ -277,14 +277,14 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   // foods
 
   document.querySelector('.food1').addEventListener('click', () => {
-    setTimeout(function(){ questions(ques[2]); }, 5000)
+    setTimeout(function(){ questions(ques[2]); }, 3000)
     food = document.querySelector('.foodFood')
     food.style.display = 'block'
     questions(ques[1])
     if (!window.config.canFeed || window.config.isMoving) return
-    window.config.canPat = false
-    window.config.canMove = false
-    window.config.canFeed = false
+    window.config.canPat = true
+    window.config.canMove = true
+    window.config.canFeed = true
 
     let foodX = Math.floor(Math.random() * window.innerWidth)
 
