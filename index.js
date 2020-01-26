@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var expBar = document.querySelector('.expBar')
   var expLevel = document.querySelector('.expLevel')
   var chatbox = document.querySelector('.chatbox')
-  var question = document.getElementsByClassName('chatbox').innerHTML
   var ques = ['Hey, how are you doing today?', 'Thank you for feeding me!', 'Did you eat today as well?']
   window.config = {
     canMove: true,
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     }
   }, 10000)
 
-  for (var i = 0; i < 15; i++) {
+  for (var i = 0; i < 3; i++) {
     var el = document.createElement('div')
     el.style.backgroundImage = 'url(images/exp_bar' + i + '.png)'
     document.querySelector('.offScreen').appendChild(el)
@@ -230,13 +229,16 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       chatbox.style.display = 'none'
       pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
       chatbox.setAttribute('class', 'chatbox')
-      question = q
+      chatbox.innerHTML = q
+      chatbox.style.fontsize = "300%"
     }, 3000)
     chatbox.style.display = 'block'
     chatbox.style.left = Number(window.config.petX.replace('px', '')) + 52.5
     chatbox.style.bottom = '240px'
     pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
     heart.setAttribute('class', 'chatbox pulse')
+    chatbox.innerHTML = q
+    chatbox.style.fontsize = "300%"
   }
 
 
@@ -252,6 +254,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       setTimeout(heartPulse, 2300)
     } else {
       heartPulse()
+      setTimeout(function(){ questions(ques[0]); }, 5000)
     }
   })
 
@@ -274,9 +277,10 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   // foods
 
   document.querySelector('.food1').addEventListener('click', () => {
+    setTimeout(function(){ questions(ques[2]); }, 5000)
     food = document.querySelector('.foodFood')
     food.style.display = 'block'
-
+    questions(ques[1])
     if (!window.config.canFeed || window.config.isMoving) return
     window.config.canPat = false
     window.config.canMove = false
@@ -311,6 +315,10 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     }, 500)
 
     window.config.petX = foodX - 80
+
+    window.config.canPat = true
+    window.config.canMove = true
+    window.config.canFeed = true
 
     pet.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
     petBack.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
