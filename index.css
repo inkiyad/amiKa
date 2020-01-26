@@ -57,20 +57,22 @@ button.colour, .underHeading span, .colSave{
 
 .pet, .petBack {
   position: absolute;
-  background-image: url(images/egg_happy_tr.png);
+  background-image: url(images/baby_chick_256.png);
   width: 160px;
   height: 150px;
   background-size: 160px 150px;
   transform-origin: center;
   bottom: 0;
   left: 0;
-  clip-path: polygon(70px 20px, 90px 20px, 90px 30px, 110px 30px,
+  clip-path: polygon(
+    90px 20px, 90px 30px, 110px 30px,
     110px 40px, 120px 40px, 120px 60px, 130px 60px, 130px 80px,
     140px 80px, 140px 110px, 130px 110px, 130px 130px, 120px 130px,
     120px 140px, 100px 140px, 100px 150px, 60px 150px, 60px 140px,
     40px 140px, 40px 130px, 30px 130px, 30px 110px, 20px 110px,
     20px 80px, 30px 80px, 30px 60px, 40px 60px, 40px 40px, 50px 40px,
-    50px 30px, 70px 30px, 70px 20px) !important;
+    50px 30px, 70px 30px, 70px 20px 
+    ) !important;
 }
 
 .loveHeart {
@@ -85,7 +87,7 @@ button.colour, .underHeading span, .colSave{
 
 .petBack {
   background-image: none;
-  background-color: #ffd400;
+  background-color: #94dff8; 
 }
 
 .petColour .colSave {
@@ -279,6 +281,27 @@ button.colour, .underHeading span, .colSave{
 
 .foodFood.gone {
   background-image: none;
+}
+
+.chatbox {
+  position: absolute;
+  bottom: -50;
+  left: -50;
+  height: 100px;
+  width: 100px;
+  background-image: url('images/chat-1.png');
+  /*background-position: center;*/
+  background-repeat: no-repeat;
+  text-align: center;
+  /*line-height: 100px; */
+  background-size: 100px 100px;
+}
+
+.chatbox.pulse {
+  animation-name: expulse;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 @keyframes pulse {

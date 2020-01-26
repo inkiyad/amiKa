@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var heart = document.querySelector('.loveHeart')
   var expBar = document.querySelector('.expBar')
   var expLevel = document.querySelector('.expLevel')
-
+  var chatbox = document.querySelector('.chatbox')
+  var question = document.getElementsByClassName('chatbox').innerHTML
+  var ques = ['Hey, how are you doing today?', 'Thank you for feeding me!', 'Did you eat today as well?']
   window.config = {
     canMove: true,
     canPat: true,
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     return !(tagName == 'SELECT' || tagName == 'TEXTAREA');
   }
 
+  localStorage.clear()
   localStorage.setItem('timeWasted', localStorage.getItem('timeWasted') || 0)
   localStorage.setItem('focusedTimeWasted', localStorage.getItem('focusedTimeWasted') || 0)
 
@@ -41,7 +44,9 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     var el = document.createElement('div')
     el.style.backgroundImage = 'url(images/exp_bar' + i + '.png)'
     document.querySelector('.offScreen').appendChild(el)
+    
   }
+
 
   var img = ['egg_happy_tr', 'egg_sad_tr', 'egg_laugh_tr', 'egg_sleep_tr', 'egg_apple_food_half_eaten', 'egg_cake_food_half_eaten', 'egg_cat_food_half_eaten']
   for (var i = 0; i < img.length; i++) {
@@ -95,7 +100,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   // if there's no colour stored, set it to yellow
   if (localStorage.getItem('petColour') === null) {
-    localStorage.setItem('petColour', '#ffd400')
+    localStorage.setItem('petColour', '#94dff8')
   }
 
   petBack.style.backgroundColor = localStorage.getItem('petColour')
@@ -156,7 +161,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   key('.', saveColour)
 
-  // when 'Pet Colour' is clicked
+  // when 'Pet Color' is clicked
   changeColour.addEventListener('click', (ev) => {
     config.canMove = false
     colPanel.style.bottom = '0'
@@ -205,16 +210,37 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       window.config.canPat = true
       window.config.canFeed = true
       heart.style.display = 'none'
-      pet.style.backgroundImage = 'url(images/egg_happy_tr.png)'
+      pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
       heart.setAttribute('class', 'loveHeart')
     }, 3000)
     heart.style.display = 'block'
     heart.style.left = Number(window.config.petX.replace('px', '')) + 52.5
     heart.style.bottom = '240px'
-    pet.style.backgroundImage = 'url(images/egg_laugh_tr.png)'
+    pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
     heart.setAttribute('class', 'loveHeart pulse')
   }
 
+  
+  function questions(q) {
+    setTimeout(() => {
+      expAdd(1)
+      window.config.canMove = true
+      window.config.canPat = true
+      window.config.canFeed = true
+      chatbox.style.display = 'none'
+      pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
+      chatbox.setAttribute('class', 'chatbox')
+      question = q
+    }, 3000)
+    chatbox.style.display = 'block'
+    chatbox.style.left = Number(window.config.petX.replace('px', '')) + 52.5
+    chatbox.style.bottom = '240px'
+    pet.style.backgroundImage = 'url(images/baby_chick_256.png)'
+    heart.setAttribute('class', 'chatbox pulse')
+  }
+
+
+ //Petting the pet
   pet.addEventListener('click', () => {
     if (!window.config.canPat) {
       return
@@ -229,6 +255,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     }
   })
 
+
   key('space', () => {
     if (!window.config.canPat) {
       return
@@ -240,6 +267,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       setTimeout(heartPulse, 2300)
     } else {
       heartPulse()
+      
     }
   })
 
@@ -259,7 +287,6 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     food.style.left = (foodX - 80) + 'px'
     food.style.transition = 'none'
     food.style.transform = 'translateY(-' + (window.innerHeight - 175) + 'px)'
-
     setTimeout(() => {
       food.style.transition = 'transform 2s'
       food.style.transform = 'none'
