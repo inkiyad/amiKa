@@ -1,9 +1,15 @@
 # VirtualPet
-## By platy11 and CyberPig123
+## By amiKa
 
+![Baby Chick](images/baby_chick_256.png)
+
+![Demo](https://lnkd.in/dSktgcr)
+
+## Framework and Special Thanks to:
  - Design: [CyberPig123](https://github.com/CyberPig123)
  - Code: [platy11](https://github.com/platy11)
+ 
+ 
 
-![Pet Egg](images/egg_happy_256.png)
 
-(batteries not included)
+
