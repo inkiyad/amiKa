@@ -3,7 +3,7 @@
 
 ![Baby Chick](images/baby_chick_256.png)
 
-![Demo](https://lnkd.in/dSktgcr)
+## [Demo](https://lnkd.in/dSktgcr)
 
 ## Framework and Special Thanks to:
  - Design: [CyberPig123](https://github.com/CyberPig123)
